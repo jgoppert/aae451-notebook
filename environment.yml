@@ -1,0 +1,19 @@
+name: aae451
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pip
+  - matplotlib
+  - numpy
+  - scipy
+  - control
+  - pydot
+  - autopep8
+  - pytest=5.0.1
+  - jupyterlab
+  - ffmpeg
+  - openh264
+  - pandas
+  - pip:
+    - casadi
