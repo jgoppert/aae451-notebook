@@ -9,7 +9,7 @@ Class notebook.
 
 ## Running Remotely via Binder
 
-* Clock binder/jupyterlab link above.
+* Click binder/jupyterlab link above.
 
 ## Local Installation
 
