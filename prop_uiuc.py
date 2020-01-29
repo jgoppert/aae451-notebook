@@ -3,7 +3,7 @@ import pandas as pd
 
 def parse_database(verbose=True):
     database = {}
-    for path in [Path('UIUC-propDB/volume-1/data'), Path('UIUC-propDB/volume-2/data')]:
+    for path in [Path('data/props/volume-1/data'), Path('data/props/UIUC-propDB/volume-2/data')]:
         for file in path.glob('*.txt'):
             args = file.stem.split('_')
             try:

@@ -55,7 +55,6 @@ P_elec = v_batt*i_motor  # electrical power
 eta_motor = P_shaft/P_elec  # motor efficiency
 
 # propeller
-
 r_prop = r_prop_in*in_to_m  # radius of prop, m
 J = V_inf/(n*2*r_prop)
 V_prop = omega_prop*r_prop  # velocity of prop tip, m/s
@@ -63,7 +62,6 @@ q_prop = rho*V_prop**2/2  # dynamics pressure of prop tip, N/m^2
 A_prop = ca.pi*r_prop**2  # area of prop disc, m^2
 T_prop = q_prop*A_prop*CT  # thrust of prop
 Q_prop = q_prop*A_prop*r_prop*CP  # torque of prop
-
 
 
 #%%
@@ -134,6 +132,7 @@ def rpm_sweep(prop_name, v0, kv0, i0_motor0, V_inf0, R_motor0):
     eta_lut = ca.interpolant('CP','bspline',[my_prop.index],my_prop.eta)
     eta_prop_lut = ca.interpolant('eta','bspline',[my_prop.index],my_prop.eta)
     Q_prop_lut = ca.substitute(Q_prop, CP, CP_lut(J))
+    T_prop_lut = ca.substitute(T_prop, CT, CT_lut(J))
 
     states = ca.vertcat(rpm_prop)
     params = ca.vertcat(rho, r_prop_in, v_batt, Kv_motor, i0_motor, V_inf, R_motor)
@@ -142,6 +141,7 @@ def rpm_sweep(prop_name, v0, kv0, i0_motor0, V_inf0, R_motor0):
 
     f_Q_prop = ca.Function('Q_prop', [states, params], [Q_prop_lut])
     f_Q_motor = ca.Function('Q_motor', [states, params], [Q_motor])
+    f_T_prop = ca.Function('T_prop', [states, params], [T_prop_lut])
     f_eta_motor = ca.Function('eta_motor', [states, params], [eta_motor])
     f_eta_prop = ca.Function('eta_prop', [states, params], [eta_prop_lut(J)])
     f_eta = ca.Function('eta', [states, params], [eta_prop_lut(J)*eta_motor])
@@ -149,7 +149,7 @@ def rpm_sweep(prop_name, v0, kv0, i0_motor0, V_inf0, R_motor0):
     rpm = np.array([np.linspace(0, 4000, 1000)])
 
     plt.figure()
-    plt.subplot(211)
+    plt.subplot(311)
     plt.plot(rpm.T, f_Q_motor(rpm, p0).T, label='motor')
     plt.plot(rpm.T, f_Q_prop(rpm, p0).T, label='prop')
     plt.title('prop motor matching')
@@ -157,7 +157,13 @@ def rpm_sweep(prop_name, v0, kv0, i0_motor0, V_inf0, R_motor0):
     plt.ylabel('torque, N-m')
     plt.grid(True)
 
-    plt.subplot(212)
+    plt.subplot(312)
+    plt.plot(rpm.T, f_T_prop(rpm, p0).T, label='prop')
+    plt.legend()
+    plt.ylabel('thrust, N')
+    plt.grid(True)
+
+    plt.subplot(313)
     plt.plot(rpm.T, f_eta_motor(rpm, p0).T, label='motor')
     plt.plot(rpm.T, f_eta_prop(rpm, p0).T, label='prop')
     plt.plot(rpm.T, f_eta(rpm, p0).T, label='total')
