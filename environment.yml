@@ -3,18 +3,19 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - pip
-  - matplotlib
-  - numpy
-  - scipy
-  - control
-  - pydot
-  - autopep8
+  - pip=21.0.1=pyhd8ed1ab_0
+  - matplotlib=3.3.4=py37h89c1867_0
+  - numpy=1.20.0=py37haa41c4c_0
+  - scipy=1.6.0=py37h14a347d_0
+  - control=0.8.4=py37h89c1867_0
+  - pydot=1.4.1=py37h89c1867_1003
+  - autopep8=1.5.4=pyh9f0ad1d_0
   - pytest=5.0.1
-  - jupyterlab
-  - ffmpeg
-  - openh264
-  - pandas
+  - jupyterlab=3.0.7=pyhd8ed1ab_0
+  - ffmpeg=4.3.1=hca11adc_2
+  - openh264=2.1.1=h780b84a_0
+  - pandas=1.2.1=py37hdc94413_0
   - pip:
-    - casadi
-    - aerosandbox
+    - casadi==3.5.5
+    - aerosandbox==2.4.2
+    - nbdime==2.1.0
