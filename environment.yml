@@ -19,3 +19,5 @@ dependencies:
     - casadi==3.5.5
     - aerosandbox==2.4.2
     - nbdime==2.1.0
+    - autograd
+    - pyvista
