@@ -216,7 +216,7 @@
       <feed>1</feed>
       <feed>2</feed>
       <feed>3</feed>
-      <thruster file="djsbt">
+      <thruster file="direct">
         <location unit="IN">
           <x> 368.52 </x>
           <y>  -80.00 </y>
