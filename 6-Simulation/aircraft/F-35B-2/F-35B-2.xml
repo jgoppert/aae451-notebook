@@ -21,7 +21,7 @@
     <vtailarea unit="FT2">   55 </vtailarea>
     <vtailarm unit="FT">   20 </vtailarm>
     <location name="AERORP" unit="FT">
-      <x> 27 </x>
+      <x> 30 </x>
       <y>  0 </y>
       <z>  0 </z>
     </location>
@@ -40,7 +40,7 @@
     <ixx unit="SLUG*FT2">     24918 </ixx>
     <iyy unit="SLUG*FT2">     89003 </iyy>
     <izz unit="SLUG*FT2">     82602 </izz>
-    <emptywt unit="LBS">     32000 </emptywt>
+    <emptywt unit="LBS">     35000 </emptywt>
     <location name="CG" unit="FT">
       <x> 30 </x>
       <y>  0 </y>
@@ -139,42 +139,49 @@
     </contact>
   </ground_reactions>
 
-  <!--<autopilot>-->
-    <!--<channel name="Pitch">-->
-      <!--<pure_gain name="fcs/pitch-cmd-norm">-->
-        <!--<input>velocities/q-rad_sec</input>-->
-        <!--<gain>0</gain>-->
-      <!--</pure_gain>-->
-      <!--<summer>-->
-        <!--<input>fcs/pitch-cmd-norm</input>-->
-        <!--<input>fcs/pitch-trim-cmd-norm</input>-->
-        <!--<output>fcs/elevator-cmd-norm</output>-->
-      <!--</summer>-->
-    <!--</channel>-->
-  <!--</autopilot>-->
-
   <flight_control>
 
-    <!--<channel name="Pitch">-->
-      <!--<pure_gain name="fcs/pitch_p">-->
-        <!--<input>velocities/q-rad_sec</input>-->
-        <!--<gain>0</gain>-->
-      <!--</pure_gain>-->
-      <!--<summer>-->
-        <!--<input>fcs/pitch_p</input>-->
-        <!--<input>fcs/pitch-trim-cmd-norm</input>-->
-        <!--<output>fcs/elevator-cmd-norm</output>-->
-      <!--</summer>-->
-    <!--</channel>-->
-
-    <channel name="Thrust">
+    <channel name="Gear">
       <pure_gain>
-        <input>velocities/v-down-fps</input>
-        <gain>0.1</gain>
-        <output>fcs/thrust-cmd-norm</output>
+        <input>gear/gear-cmd-norm</input>
+        <gain>1</gain>
+        <output>gear/gear-pos-norm</output>
       </pure_gain>
     </channel>
 
+    <channel name="Elevator">
+      <pure_gain>
+        <input>fcs/elevator-cmd-norm</input>
+        <gain>-1</gain>
+        <output>fcs/elevator-pos-rad</output>
+      </pure_gain>
+    </channel>
+
+    <channel name="Left Aileron">
+      <pure_gain>
+        <input>fcs/aileron-cmd-norm</input>
+        <gain>-1</gain>
+        <output>fcs/left-aileron-pos-rad</output>
+      </pure_gain>
+    </channel>
+
+    <channel name="Right Aileron">
+      <pure_gain>
+        <input>fcs/aileron-cmd-norm</input>
+        <gain>1</gain>
+        <output>fcs/right-aileron-pos-rad</output>
+      </pure_gain>
+    </channel>
+
+    <channel name="Rudder">
+      <pure_gain>
+        <input>fcs/rudder-cmd-norm</input>
+        <gain>1</gain>
+        <output>fcs/rudder-pos-rad</output>
+      </pure_gain>
+    </channel>
+      
+      
     <channel name="Engine0">
       <pure_gain name="fcs/elevator_to_engine0">
         <input>fcs/elevator-cmd-norm</input>
@@ -246,6 +253,7 @@
         <output>fcs/throttle-pos-norm[3]</output>
       </summer>
     </channel>
+
 
   </flight_control>
 
@@ -614,13 +622,16 @@
     <axis name="PITCH">
       <function name="aero/coefficient/Cmalpha">
         <description>Pitch_moment_due_to_alpha</description>
-        <product>
-          <property>aero/qbar-psf</property>
-          <property>metrics/Sw-sqft</property>
-          <property>metrics/cbarw-ft</property>
-          <property>aero/alpha-rad</property>
-          <value>-0.3</value>
-        </product>
+        <sum>
+          <value>0.1</value> <!-- Cm0 -->
+          <product>
+            <property>aero/qbar-psf</property>
+            <property>metrics/Sw-sqft</property>
+            <property>metrics/cbarw-ft</property>
+            <property>aero/alpha-rad</property>
+            <value>-0.3</value>
+          </product>
+        </sum>
       </function>
       <function name="aero/coefficient/Cmde">
         <description>Pitch_moment_due_to_elevator</description>
