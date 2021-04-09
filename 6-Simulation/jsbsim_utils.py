@@ -38,13 +38,12 @@ def set_location_purdue_airport(fdm):
     fdm['ic/psi-true-deg'] = 280
 
 
-def trim(aircraft, ic, design_vector, x0, verbose, **kwargs):
+def trim(aircraft, ic, design_vector, x0, verbose, cost=None, **kwargs):
     root = Path('.').resolve()
     fdm = jsbsim.FGFDMExec(str(root)) # The path supplied to FGFDMExec is the location of the folders "aircraft", "engines" and "systems"
     fdm.set_debug_level(0)    
     fdm.load_model(aircraft)
-    fdm.suspend_integration()
-    
+
     # set location
     set_location_purdue_airport(fdm)
     
@@ -52,9 +51,20 @@ def trim(aircraft, ic, design_vector, x0, verbose, **kwargs):
     for key in design_vector + list(ic.keys()):
         if key not in fdm_props.keys():
             raise KeyError(key)
-            
+    
+    if cost is None:
+        def cost(fdm):
+            # compute cost, force moment balance
+            udot = fdm['accelerations/udot-ft_sec2']
+            vdot = fdm['accelerations/vdot-ft_sec2']
+            wdot = fdm['accelerations/wdot-ft_sec2']
+            pdot = fdm['accelerations/pdot-rad_sec2']
+            qdot = fdm['accelerations/qdot-rad_sec2']
+            rdot = fdm['accelerations/rdot-rad_sec2']
+            return udot**2 + vdot**2 + wdot**2 + pdot**2 + qdot**2 + rdot**2
+
     # cost function for trimming
-    def cost(xd):
+    def trim_cost(fdm, xd):
         # set initial condition
         for var in ic.keys():
             fdm[var] = ic[var]
@@ -63,24 +73,16 @@ def trim(aircraft, ic, design_vector, x0, verbose, **kwargs):
         for i, var in enumerate(design_vector):
             fdm[var] = xd[i]
         
+        # trim propulsion
+        prop = fdm.get_propulsion()
+        prop.init_running(-1)
+
         # set initial conditions
         fdm.run_ic()
         
-        # trim propulsion
-        prop = fdm.get_propulsion()
-        for i in range(prop.get_num_engines()):
-            prop.init_running(i)
-
-        # compute cost, force moment balance
-        udot = fdm['accelerations/udot-ft_sec2']
-        vdot = fdm['accelerations/vdot-ft_sec2']
-        wdot = fdm['accelerations/wdot-ft_sec2']
-        pdot = fdm['accelerations/pdot-rad_sec2']
-        qdot = fdm['accelerations/qdot-rad_sec2']
-        rdot = fdm['accelerations/rdot-rad_sec2']
-        return udot**2 + vdot**2 + wdot**2 + pdot**2 + qdot**2 + rdot**2
+        return cost(fdm)
     
-    res = scipy.optimize.minimize(fun=cost, x0=x0, **kwargs)
+    res = scipy.optimize.minimize(fun=lambda xd: trim_cost(fdm, xd), x0=x0, **kwargs)
     if verbose:
         print(res)
     for i, var in enumerate(design_vector):
@@ -120,9 +122,8 @@ def simulate(aircraft, op_0, op_list=None, op_times=None, tf=50, realtime=False)
     
     # start engines
     prop = fdm.get_propulsion()
+    prop.init_running(-1)
     fdm.run_ic()
-    for i in range(prop.get_num_engines()):
-        prop.init_running(i)
 
     # start loop
     log = Logger()
