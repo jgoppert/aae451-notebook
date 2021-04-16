@@ -3,7 +3,7 @@
 <PropertyList>
 	
 	<model>
-		<path>Aircraft/F-35B/Models/Payload/pylons.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/pylons.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0</y-m>
@@ -16,7 +16,7 @@
 	
 	<model>
 		<name>left-AIM9-pos-1</name>
-		<path>Aircraft/F-35B/Models/Payload/aim9/AIM-9.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim9/AIM-9.xml</path>
 		<offsets>
 			<x-m>2.5</x-m>
 			<y-m>-4.95</y-m>
@@ -46,7 +46,7 @@
  
 	<model>
 		<name>left-AGM65-pos-1</name>
-		<path>Aircraft/F-35B/Models/Payload/2xAGM-65.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/2xAGM-65.xml</path>
 		<offsets>
 			<x-m>2.15</x-m>
 			<y-m>-4.27</y-m>
@@ -74,7 +74,7 @@
 
 	<model>
 		<name>left-mk82-pos-1</name>
-		<path>Aircraft/F-35B/Models/Payload/2xMK-82.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/2xMK-82.xml</path>
 		<offsets>
 			<x-m>2.15</x-m>
 			<y-m>-4.27</y-m>
@@ -104,7 +104,7 @@
 
 	<model>
 		<name>left-droptank</name>
-		<path>Aircraft/F-35B/Models/Payload/Tank/Tank.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/Tank/Tank.xml</path>
 		<offsets>
 			<x-m>1.25</x-m>
 			<y-m>-3.25</y-m>
@@ -132,7 +132,7 @@
 
 	<model>
 		<name>left-agm154</name>
-		<path>Aircraft/F-35B/Models/Payload/agm154/agm154.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/agm154/agm154.xml</path>
 		<offsets>
 			<x-m>1.25</x-m>
 			<y-m>-3.25</y-m>
@@ -160,7 +160,7 @@
 
 	<model>
 		<name>left-GBU10</name>
-		<path>Aircraft/F-35B/Models/Payload/gbu10/gbu10.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/gbu10/gbu10.xml</path>
 		<offsets>
 			<x-m>1.6</x-m>
 			<y-m>-3.25</y-m>
@@ -188,7 +188,7 @@
 
 	<model>
 		<name>left-GBU24</name>
-		<path>Aircraft/F-35B/Models/Payload/gbu24/gbu24.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/gbu24/gbu24.xml</path>
 		<offsets>
 			<x-m>1.4</x-m>
 			<y-m>-3.25</y-m>
@@ -218,7 +218,7 @@
 
 	<model>
 		<name>left-internal1</name>
-		<path>Aircraft/F-35B/Models/Payload/aim120/AIM-120.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim120/AIM-120.xml</path>
 		<offsets>
 			<x-m> 0.05</x-m>
 			<y-m>-0.5</y-m>
@@ -246,7 +246,7 @@
 
 	<model>
 		<name>left-internal2</name>
-		<path>Aircraft/F-35B/Models/Payload/aim9/AIM-9.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim9/AIM-9.xml</path>
 		<offsets>
 			<x-m> 0.05</x-m>
 			<y-m>-0.5</y-m>
@@ -274,7 +274,7 @@
 
 	<model>
 		<name>left-internal3</name>
-		<path>Aircraft/F-35B/Models/Payload/aim120+mk82L.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim120+mk82L.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0</y-m>
@@ -302,7 +302,7 @@
 
 	<model>
 		<name>left-internal4</name>
-		<path>Aircraft/F-35B/Models/Payload/aim120+gbu12L.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim120+gbu12L.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0</y-m>
@@ -330,7 +330,7 @@
 
 	<model>
 		<name>left-internal5</name>
-		<path>Aircraft/F-35B/Models/Payload/aim120+gbu16L.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim120+gbu16L.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0</y-m>
@@ -360,7 +360,7 @@
 
 	<model>
 		<name>right-internal1</name>
-		<path>Aircraft/F-35B/Models/Payload/aim120/AIM-120.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim120/AIM-120.xml</path>
 		<offsets>
 			<x-m> 0.05</x-m>
 			<y-m>0.5</y-m>
@@ -388,7 +388,7 @@
 
 	<model>
 		<name>right-internal2</name>
-		<path>Aircraft/F-35B/Models/Payload/aim9/AIM-9.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim9/AIM-9.xml</path>
 		<offsets>
 			<x-m> 0.05</x-m>
 			<y-m>0.5</y-m>
@@ -416,7 +416,7 @@
 
 	<model>
 		<name>right-internal3</name>
-		<path>Aircraft/F-35B/Models/Payload/aim120+mk82R.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim120+mk82R.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0</y-m>
@@ -444,7 +444,7 @@
 
 	<model>
 		<name>right-internal4</name>
-		<path>Aircraft/F-35B/Models/Payload/aim120+gbu12R.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim120+gbu12R.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0</y-m>
@@ -472,7 +472,7 @@
 
 	<model>
 		<name>right-internal5</name>
-		<path>Aircraft/F-35B/Models/Payload/aim120+gbu16R.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim120+gbu16R.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0</y-m>
@@ -502,7 +502,7 @@
 
 	<model>
 		<name>right-droptank</name>
-		<path>Aircraft/F-35B/Models/Payload/Tank/Tank.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/Tank/Tank.xml</path>
 		<offsets>
 			<x-m>1.25</x-m>
 			<y-m>3.25</y-m>
@@ -530,7 +530,7 @@
 
 	<model>
 		<name>right-agm154</name>
-		<path>Aircraft/F-35B/Models/Payload/agm154/agm154.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/agm154/agm154.xml</path>
 		<offsets>
 			<x-m>1.25</x-m>
 			<y-m>3.25</y-m>
@@ -558,7 +558,7 @@
 
 	<model>
 		<name>right-GBU10</name>
-		<path>Aircraft/F-35B/Models/Payload/gbu10/gbu10.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/gbu10/gbu10.xml</path>
 		<offsets>
 			<x-m>1.6</x-m>
 			<y-m>3.25</y-m>
@@ -586,7 +586,7 @@
 
 	<model>
 		<name>right-GBU24</name>
-		<path>Aircraft/F-35B/Models/Payload/gbu24/gbu24.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/gbu24/gbu24.xml</path>
 		<offsets>
 			<x-m>1.4</x-m>
 			<y-m>3.25</y-m>
@@ -616,7 +616,7 @@
 
 	<model>
 		<name>right-AGM65-pos-1</name>
-		<path>Aircraft/F-35B/Models/Payload/2xAGM-65.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/2xAGM-65.xml</path>
 		<offsets>
 			<x-m>2.15</x-m>
 			<y-m>4.27</y-m>
@@ -644,7 +644,7 @@
 
 	<model>
 		<name>right-mk82-pos-1</name>
-		<path>Aircraft/F-35B/Models/Payload/2xMK-82.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/2xMK-82.xml</path>
 		<offsets>
 			<x-m>2.15</x-m>
 			<y-m>4.27</y-m>
@@ -674,7 +674,7 @@
   	
 	<model>
 		<name>right-AIM9-pos-1</name>
-		<path>Aircraft/F-35B/Models/Payload/aim9/AIM-9.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim9/AIM-9.xml</path>
 		<offsets>
 			<x-m>2.5</x-m>
 			<y-m>4.95</y-m>

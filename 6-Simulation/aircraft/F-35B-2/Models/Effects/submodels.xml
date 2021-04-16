@@ -4,7 +4,7 @@
 
   <submodel>
     <name>Impact smoke</name>
-    <model>Aircraft/F-35B/Models/Effects/flack.xml</model>
+    <model>Aircraft/F-35B-2/Models/Effects/flack.xml</model>
     <!--<trigger>ai/submodels/trigger</trigger>-->
     <speed>0</speed>
     <repeat>true</repeat>

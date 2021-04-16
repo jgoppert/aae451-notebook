@@ -7,7 +7,7 @@
 	<!-- Pilot -->
 	
 	<model>
-		<path>Aircraft/F-35B/Models/Pilot.xml</path>
+		<path>Aircraft/F-35B-2/Models/Pilot.xml</path>
 		<offsets>
 			<x-m>-5.20</x-m>
 			<y-m> 0.00</y-m>
@@ -23,7 +23,7 @@
 	<!-- Instruments -->
 	
 	<model>
-		<path>Aircraft/F-35B/Models/Instruments/MFD/MFD.xml</path>
+		<path>Aircraft/F-35B-2/Models/Instruments/MFD/MFD.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0</y-m>

@@ -1,12 +1,14 @@
 from pathlib import Path
 import time
-import pandas as pd
-import numpy as np
+from copy import deepcopy
+
+import matplotlib.pyplot as plt
+import jsbsim
 import scipy.optimize
 import pandas as pd
-
-import jsbsim
-
+import numpy as np
+import pandas as pd
+import control
 
 class Logger:
     
@@ -157,3 +159,98 @@ def simulate(aircraft, op_0, op_list=None, op_times=None, tf=50, realtime=False)
 
     log = log.to_pandas()
     return log
+
+
+def linearize(aircraft, states, states_deriv, inputs, outputs, ic, dx, n_round=3):
+    assert len(states_deriv) == len(states)
+
+    root = Path('.').resolve()
+    fdm = jsbsim.FGFDMExec(str(root)) # The path supplied to FGFDMExec is the location of the folders "aircraft", "engines" and "systems"
+    fdm.set_debug_level(0)    
+    fdm.load_model(aircraft)
+        
+    fdm_props = fdm.get_property_catalog('')
+    for key in states + inputs + outputs + list( ic.keys()):
+        if key not in fdm_props.keys():
+            raise KeyError(key)
+    
+    for key in states_deriv:
+        if key not in fdm_props.keys() and key != 'approximate':
+            raise KeyError(key)
+    
+    n = len(states)
+    p = len(inputs)
+    m = len(outputs)
+    
+    def set_ic():
+        set_location_purdue_airport(fdm)
+        for key in ic.keys():
+            fdm[key] = ic[key]
+        fdm.get_propulsion().init_running(-1)
+        fdm.run_ic()
+    
+    A = np.zeros((n, n))
+    C = np.zeros((m, n))
+    for i, state in enumerate(states):
+        set_ic()
+        start = fdm.get_property_catalog('')
+        fdm[state] = start[state] + dx
+        fdm.resume_integration()
+        fdm.run()
+        for j, state_deriv in enumerate(states_deriv):
+            if state_deriv == 'approximate':
+                A[j, i] = (fdm[states[j]] - start[states[j]])/fdm.get_delta_t()
+            else:
+                A[j, i] = (fdm[state_deriv] - start[state_deriv]) / dx
+        for j, output in enumerate(outputs):
+            C[j, i] = (fdm[output] - start[output]) / dx
+
+    set_ic()
+
+    B = np.zeros((n, p))
+    D = np.zeros((m, p))
+    for i, inp in enumerate(inputs):
+        set_ic()
+        start = fdm.get_property_catalog('')
+        fdm[inp] = start[inp] + dx
+        fdm.resume_integration()
+        fdm.run()
+        for j, state_deriv in enumerate(states_deriv):
+            if state_deriv == 'approximate':
+                B[j, i] = (fdm[states[j]] - start[states[j]])/fdm.get_delta_t()
+            else:
+                B[j, i] = (fdm[state_deriv] - start[state_deriv]) / dx
+        for j, output in enumerate(outputs):
+            D[j, i] = (fdm[output] - start[output]) / dx
+    
+    A = np.round(A, n_round)
+    B = np.round(B, n_round)
+    C = np.round(C, n_round)
+    D = np.round(D, n_round)
+    return (A, B, C, D)
+
+
+def rootlocus(sys, kvect=None):
+    if kvect is None:
+        kvect = np.logspace(-3, 0, 1000)
+    rlist, klist = control.rlocus(sys, plot=False, kvect=kvect)
+    for root in rlist.T:
+        plt.plot(np.real(root), np.imag(root))
+        plt.plot(np.real(root[-1]), np.imag(root[-1]), 'bs')
+    for pole in control.pole(sys):
+        plt.plot(np.real(pole), np.imag(pole), 'rx')
+    for zero in control.zero(sys):
+        plt.plot(np.real(zero), np.imag(zero), 'go')
+    plt.grid()
+    plt.xlabel('real')
+    plt.ylabel('imag')
+
+
+def clean_tf(G, tol=1e-5):
+    num = G.num
+    den = G.den
+    for poly in num, den:
+        for i in range(len(poly)):
+            for j in range(len(poly[i])):
+                poly[i][j] = np.where(np.abs(poly[i][j]) < tol, 0, poly[i][j])
+    return control.tf(num, den)

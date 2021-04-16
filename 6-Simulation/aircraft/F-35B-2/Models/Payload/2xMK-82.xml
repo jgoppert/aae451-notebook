@@ -12,7 +12,7 @@
     </animation>
 	
 	<model>
-		<path>Aircraft/F-35B/Models/Payload/doublerack/doublerack.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/doublerack/doublerack.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0</y-m>
@@ -21,7 +21,7 @@
 	</model>
 	
 	<model>
-		<path>Aircraft/F-35B/Models/Payload/mk82/MK-82-LD.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/mk82/MK-82-LD.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>-0.43</y-m>
@@ -30,7 +30,7 @@
 	</model>
 	
 	<model>
-		<path>Aircraft/F-35B/Models/Payload/mk82/MK-82-LD.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/mk82/MK-82-LD.xml</path>
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0.43</y-m>

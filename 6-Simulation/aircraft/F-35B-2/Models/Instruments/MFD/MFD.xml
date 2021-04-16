@@ -3,7 +3,7 @@
 <PropertyList>
   
 	<model>
-		<path>Aircraft/F-35B/Models/Instruments/MFD/ai/stby-ai.xml</path>
+		<path>Aircraft/F-35B-2/Models/Instruments/MFD/ai/stby-ai.xml</path>
 		<offsets>
 			<x-m>-5.5745 </x-m>
 			<y-m>0.118 </y-m>
@@ -13,7 +13,7 @@
 	</model>
   
 	<model>
-		<path>Aircraft/F-35B/Models/Instruments/MFD/asi/stby-asi.xml</path>
+		<path>Aircraft/F-35B-2/Models/Instruments/MFD/asi/stby-asi.xml</path>
 		<offsets>
 			<x-m>-5.5745 </x-m>
 			<y-m>0.038 </y-m>
@@ -23,7 +23,7 @@
 	</model>
   
 	<model>
-		<path>Aircraft/F-35B/Models/Instruments/MFD/alt/stby-alt.xml</path>
+		<path>Aircraft/F-35B-2/Models/Instruments/MFD/alt/stby-alt.xml</path>
 		<offsets>
 			<x-m>-5.5745 </x-m>
 			<y-m>-0.13 </y-m>
@@ -34,7 +34,7 @@
   
   
 	<model>
-		<path>Aircraft/F-35B/Models/Instruments/MFD/radar/radar.xml</path>
+		<path>Aircraft/F-35B-2/Models/Instruments/MFD/radar/radar.xml</path>
 		<offsets>
 			<x-m>-5.61 </x-m>
 			<y-m>0.243 </y-m>
@@ -45,7 +45,7 @@
 	</model>
   
 	<model>
-		<path>Aircraft/F-35B/Models/Instruments/MFD/radar/radar2.xml</path>
+		<path>Aircraft/F-35B-2/Models/Instruments/MFD/radar/radar2.xml</path>
 		<offsets>
 			<x-m>-5.626 </x-m>
 			<y-m>0.0853 </y-m>
@@ -56,7 +56,7 @@
 	</model>
   
 	<model>
-		<path>Aircraft/F-35B/Models/Instruments/MFD/res/terrain-map-pixel.xml</path>
+		<path>Aircraft/F-35B-2/Models/Instruments/MFD/res/terrain-map-pixel.xml</path>
 		<offsets>
 			<x-m>-5.605 </x-m>
 			<y-m>-0.09 </y-m>

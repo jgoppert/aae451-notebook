@@ -14,7 +14,7 @@
 	
 	
 	<model>
-		<path>Aircraft/F-35B/Models/Payload/aim120/AIM-120.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/aim120/AIM-120.xml</path>
 		<offsets>
 			<x-m> 0.05</x-m>
            <y-m>0.5</y-m>
@@ -23,7 +23,7 @@
 	</model>
 	
 	<model>
-		<path>Aircraft/F-35B/Models/Payload/mk82/MK-82-LD.xml</path>
+		<path>Aircraft/F-35B-2/Models/Payload/mk82/MK-82-LD.xml</path>
 		<offsets>
 			<x-m> 0.05</x-m>
             <y-m>1.05</y-m>

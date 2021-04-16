@@ -4,9 +4,9 @@
 	<sim>
 		<description>Lockheed Martin F-35B Lightning II (JSBSim)</description>
 		<author>James Goppert, Modified from Petar Jedvaj, Detlef Faber, F-GTUX, Stuart Cassie and Gary Brown</author>
-		<status>0.4.6</status>
+		<status>0.0.0</status>
 		<startup>
-			<splash-texture>Aircraft/F-35B/Splash.png</splash-texture>
+			<splash-texture>Aircraft/F-35B-2/Splash.png</splash-texture>
 		</startup>
 		<flight-model>jsb</flight-model>
 		<aero>F-35B-2</aero>

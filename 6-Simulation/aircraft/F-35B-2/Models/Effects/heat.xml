@@ -13,7 +13,7 @@
 <animation>
 <type>rotate</type>
 <object-name>heat</object-name>
-<property>/controls/engines/engine/mixture</property>
+<property>/surface-positions/spoilers-pos-norm</property>
 <interpolation>
 <entry>
 <ind>0.0</ind>
