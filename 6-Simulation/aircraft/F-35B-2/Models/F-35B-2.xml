@@ -553,10 +553,10 @@
 		<object-name>fan</object-name>
 		<condition>
 			<not>
-				<greater-than>
+				<less-than>
     				<property>/surface-positions/spoilers-pos-norm</property>
-					<value>0.99</value>
-				</greater-than>
+					<value>0.77</value>
+				</less-than>
 			</not>
 		</condition>
 	</animation>
@@ -565,7 +565,7 @@
 	<animation>
 		<type>spin</type>
 		<object-name>fan</object-name>
-		<property>engines/engine[0]/n2</property>
+		<property>engines/engine[1]/running</property>
 		<factor>20</factor>
 		<center>
 			<x-m>-2.9674</x-m>
@@ -587,16 +587,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>80</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>80</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>80</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -615,16 +611,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>-100</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>-100</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>-100</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -643,16 +635,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>100</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>100</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>-100</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -671,16 +659,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>95</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>95</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>95</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -699,16 +683,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>-95</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>-95</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>-95</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -843,16 +823,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>-90</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>-90</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>80</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -871,16 +847,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>90</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>90</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>80</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -901,16 +873,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>-95</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>-95</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>-95</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -929,16 +897,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>95</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>95</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>95</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -959,16 +923,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>-20</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>-20</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>-20</dep>
 			</entry>
 		</interpolation>
 		<axis>   
@@ -987,16 +947,12 @@
     	<property>/surface-positions/spoilers-pos-norm</property>
 		<interpolation>
 			<entry>
-				<ind>0.0</ind>
-				<dep>15</dep>
-			</entry>
-			<entry>
 				<ind>0.5</ind>
-				<dep>15</dep>
+				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
-				<dep>0</dep>
+				<ind>0.51</ind>
+				<dep>15</dep>
 			</entry>
 		</interpolation>
 		<axis>   

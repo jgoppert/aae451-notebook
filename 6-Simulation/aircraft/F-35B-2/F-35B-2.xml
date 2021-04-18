@@ -140,21 +140,20 @@
   </ground_reactions>
 
   <flight_control>
-      
-    <property>ap/roll_hold</property>
-    <property>ap/pitch_hold</property>
-    <property>ap/yaw_hold</property>
-    <property>ap/alt_hold</property>
-    <property>ap/h-agl-cmd</property>
+    <property value="280" description="heading command">ap/heading-cmd-deg</property>
+    <property value="0" description="enable roll loop">ap/roll-enable</property>
+    <property value="0" description="enable pitch loop">ap/pitch-enable</property>
+    <property value="0" description="enable yaw loop">ap/yaw-enable</property>
+    <property value="0" description="enable auto gear deployment">ap/gear-enable</property>
+    <property value="0" description="enable altitude loop">ap/h-enable</property>
+    <property value="596" description="altitude above sea level setpoint ft">ap/h-sl-cmd-ft</property>
 
     <function name="ap/engine-roll-mix">
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   0.2
-                100 0.2
+                100 1
                 200 0
-                300 0
             </tableData>
         </table>
     </function>
@@ -163,10 +162,8 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   0.6
-                100 0.6
+                100 1
                 200 0
-                300 0
             </tableData>
         </table>
     </function>
@@ -175,10 +172,18 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   0
-                100 1
-                200 1
-                300 1
+                0 0.1
+                200  1
+            </tableData>
+        </table>
+    </function>
+
+    <function name="ap/heading-error-to-phi-deg-cmd">
+        <table>
+            <independentVar>velocities/vt-fps</independentVar>
+            <tableData>
+                100 0
+                200 3
             </tableData>
         </table>
     </function>
@@ -188,9 +193,6 @@
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
                 0   0
-                100  0
-                200 0
-                300 0
             </tableData>
         </table>
     </function>
@@ -199,10 +201,8 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   0.2
-                100  0.2
-                200 0.0
-                300 0.0
+                250 0.97  <!-- adjusted for moment balance-->
+                300 0
             </tableData>
         </table>
     </function>
@@ -212,9 +212,6 @@
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
                 0   1
-                100 1
-                200 1.0
-                300 1.0
             </tableData>
         </table>
     </function>
@@ -223,10 +220,7 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   3
-                100  3
-                200 1
-                300 1
+                0   0.1
             </tableData>
         </table>
     </function>
@@ -235,10 +229,7 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   3
-                100 3
-                200 1
-                300 1
+                0  0.2
             </tableData>
         </table>
     </function>
@@ -247,10 +238,8 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   3
-                100 3
-                200 10
-                300 10
+                300 0.05
+                400 0.01
             </tableData>
         </table>
     </function>
@@ -259,10 +248,8 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   3
-                100 3
-                200 10
-                300 10
+                300  0.1
+                400  0.02
             </tableData>
         </table>
     </function>
@@ -272,10 +259,7 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   1
-                100 1
-                200 1
-                300 1
+                0   0.01
             </tableData>
         </table>
     </function>
@@ -284,35 +268,26 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   1
-                100 1
-                200 1
-                300 1
+                0  0.02
             </tableData>
         </table>
     </function>
       
 
-    <function name="ap/kp-alt">
+    <function name="ap/kp-h">
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   0.001
-                100 0.001
-                200 0.001
-                300 0.001
+                200   0.02
             </tableData>
         </table>
     </function>
 
-    <function name="ap/kd-alt">
+    <function name="ap/kd-h">
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   0.001
-                100 0.001
-                200 0.001
-                300 0.001
+                200   0.2
             </tableData>
         </table>
     </function>
@@ -321,8 +296,7 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   0
-                100 0
+                150 0
             </tableData>
         </table>
     </function>
@@ -331,8 +305,12 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   1.2988612309031933
-                100 1.3087562420014922
+                100 0.03
+                200 0.08
+                300 0.17
+                400 0.02
+                500 0.01
+                600 0.01
             </tableData>
         </table>
     </function>
@@ -342,7 +320,6 @@
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
                 0   0
-                100 0
             </tableData>
         </table>
     </function>
@@ -351,20 +328,28 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   0.9250074376220366
-                100 0.933087257431862
+              0   0.864
+              100 0.836
+              200 0.698
+              300 0.554
+              400 0.428
+              500 0.449
+              600 0.478
             </tableData>
         </table>
     </function>
 
-    <function name="ap/pitch-rad-trim">
+    <function name="ap/theta-deg-trim">
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   0
-                100 0
-                200 0
-                300 0
+               0  0
+              10  0.66
+              50  5.7
+              250 5.7
+              400 3.48
+              500 1.97
+              600 1.13
             </tableData>
         </table>
     </function>
@@ -373,10 +358,13 @@
         <table>
             <independentVar>velocities/vt-fps</independentVar>
             <tableData>
-                0   1.570796349749601
-                100 1.5537481223573382
-                200 0
-                300 0
+              0   1.57
+              100 1.1463170916873893
+              200 0.6827786808527123
+              300 0.0011006337565355603
+              400 1.0415072139887315e-08
+              500 0.052937354599632766
+              600 0.026207264942735602
             </tableData>
         </table>
     </function>
@@ -387,8 +375,8 @@
         <table>
             <independentVar>propulsion/engine/pitch-angle-rad</independentVar>
             <tableData>
-                0  1
-                1.57 0
+                0  0
+                1.57 1
             </tableData>
         </table>
     </function>
@@ -400,118 +388,150 @@
       </pure_gain>
     </channel>
 
+    <function name="ap/gear-deploy">
+      <table>
+        <independentVar>position/h-agl-ft</independentVar>
+        <tableData>
+          0  1
+          20 1
+          30 0
+          40 0
+        </tableData>
+      </table>
+    </function>
+
     <channel name="Gear">
-      <pure_gain>
-        <input>gear/gear-cmd-norm</input>
-        <gain>1</gain>
+      <lag_filter name="ap/gear-servo">
+        <input>ap/gear-deploy</input>
+        <c1>1.0</c1>
+        <output>ap/gear-cmd-norm</output>
+      </lag_filter>
+      <switch>
+        <default value="gear/gear-cmd-norm"/>
+        <test value="ap/gear-deploy">
+          ap/gear-enable == 1
+        </test>
         <output>gear/gear-pos-norm</output>
-      </pure_gain>
+      </switch>
     </channel>
 
     <channel name="Roll">
-      <summer name="ap/roll-error">
-        <value>0</value>
-        <input>-attitude/phi-rad</input>
+      <summer name="ap/heading-error-deg">
+        <!-- runway  heading  note, TODO handle angle wrap-->
+        <input>ap/heading-cmd-deg</input>
+        <input>-attitude/psi-deg</input>
       </summer>
-      <pid name="ap/roll-ap-error-pid">
+      <pure_gain name="ap/phi-deg-cmd">
+        <input>ap/heading-error-deg</input>
+        <gain>ap/heading-error-to-phi-deg-cmd</gain>
+        <clipto>
+            <min>-30</min>
+            <max>30</max>
+        </clipto>
+      </pure_gain>
+      <summer name="ap/roll-error">
+        <input>ap/phi-deg-cmd</input>
+        <input>-attitude/phi-deg</input>
+      </summer>
+      <pid name="ap/roll-pid">
         <input>ap/roll-error</input>
         <kp>ap/kp-roll</kp>
         <ki> 0 </ki>
         <kd>ap/kd-roll</kd>
         <clipto>
-            <min>-0.3</min>
-            <max>0.3</max>
+            <min>-0.1</min>
+            <max>0.1</max>
         </clipto>
       </pid>
       <summer name="ap/roll-auto">
         <input>ap/aileron-trim</input>
-        <input>ap/roll-ap-error-pid</input>
+        <input>ap/roll-pid</input>
       </summer>
       <switch name="ap/aileron-cmd-norm">
         <default value="fcs/aileron-cmd-norm"/>
         <test value="ap/roll-auto">
-          ap/roll_hold == 1
+          ap/roll-enable == 1
         </test>
       </switch>
     </channel>
 
     <channel name="Pitch">
       <summer name="ap/pitch-error">
-        <input>ap/pitch-rad-trim</input>
-        <input>-attitude/theta-rad</input>
+        <input>ap/theta-deg-trim</input>
+        <input>-attitude/theta-deg</input>
       </summer>
-      <pid name="ap/pitch-ap-error-pid">
+      <pid name="ap/pitch-pid">
         <input>ap/pitch-error</input>
         <kp>ap/kp-pitch</kp>
         <ki> 0 </ki>
         <kd>ap/kd-pitch</kd>
         <clipto>
-            <min>-0.3</min>
-            <max>0.3</max>
+            <min>-1</min>
+            <max>1</max>
         </clipto>
       </pid>
       <summer name="ap/pitch-auto">
         <input>ap/elevator-trim</input>
-        <input>ap/pitch-ap-error-pid</input>
+        <input>ap/pitch-pid</input>
       </summer>
       <switch name="ap/elevator-cmd-norm">
         <default value="fcs/elevator-cmd-norm"/>
         <test value="ap/pitch-auto">
-          ap/pitch_hold == 1
+          ap/pitch-enable == 1
         </test>
       </switch>
     </channel>
 
     <channel name="Yaw">
-      <summer name="fcs/pitch-error">
-        <value>270</value>
-        <input>-attitude/psi-deg</input>
-      </summer>
-      <pid name="ap/yaw-ap-error-pid">
-        <input>attitude/psi-rad</input>
+      <pid name="ap/yaw-pid">
+        <input>-velocities/r-rad_sec</input>
         <kp>ap/kp-yaw</kp>
         <ki> 0 </ki>
         <kd>ap/kd-yaw</kd>
         <clipto>
-            <min>-0.3</min>
-            <max>0.3</max>
+            <min>-0.1</min>
+            <max>0.1</max>
         </clipto>
       </pid>
       <summer name="ap/yaw-auto">
         <input>ap/rudder-trim</input>
-        <input>ap/yaw-ap-error-pid</input>
+        <input>ap/yaw-pid</input>
       </summer>
       <switch name="ap/rudder-cmd-norm">
-        <default value="fcs/elevator-cmd-norm"/>
+        <default value="fcs/rudder-cmd-norm"/>
         <test value="ap/yaw-auto">
-          ap/yaw_hold == 1
+          ap/yaw-enable == 1
         </test>
       </switch>
     </channel>
 
     <channel name="Altitude">
-      <summer name="ap/alt-error">
-        <input>ap/h-agl-cmd</input>
-        <input>-position/h-agl-ft</input>
+      <summer name="ap/h-error">
+        <input>ap/h-sl-cmd-ft</input>
+        <input>-position/h-sl-ft</input>
       </summer>
-      <pid name="ap/alt-ap-error-pid">
-        <input>ap/alt-error</input>
-        <kp>ap/kp-alt</kp>
-        <ki> 0 </ki>
-        <kd>ap/kd-alt</kd>
+      <pid name="ap/h-pid">
+        <input>ap/h-error</input>
+        <kp>ap/kp-h</kp>
+        <ki>0</ki>
+        <kd>ap/kd-h</kd>
         <clipto>
-            <min>-0.6</min>
-            <max>0.6</max>
+            <min>-0.05</min>
+            <max>0.05</max>
         </clipto>
       </pid>
-      <summer name="ap/alt-auto">
+      <summer name="ap/h-auto">
         <input>ap/throttle-trim</input>
-        <input>ap/alt-ap-error-pid</input>
+        <input>ap/h-pid</input>
+        <clipto>
+            <min>0</min>
+            <max>1</max>
+        </clipto>
       </summer>
       <switch name="ap/throttle-cmd-norm">
         <default value="fcs/throttle-cmd-norm"/>
-        <test value="ap/alt-auto">
-          ap/alt_hold == 1
+        <test value="ap/h-auto">
+          ap/h-enable == 1
         </test>
       </switch>
     </channel>
@@ -520,48 +540,80 @@
       <pure_gain>
         <input>ap/elevator-cmd-norm</input>
         <gain>-ap/aero-moment-mix</gain>
-        <output>fcs/elevator-pos-rad</output>
         <clipto>
             <min>-0.5</min>
             <max>0.5</max>
         </clipto>
+        <output>fcs/elevator-pos-norm</output>
       </pure_gain>
+      <aerosurface_scale>
+        <input>fcs/elevator-pos-norm</input>
+        <range>
+          <min>-50</min>
+          <max>50</max>
+        </range>
+        <output>fcs/elevator-pos-deg</output>
+      </aerosurface_scale>
     </channel>
 
     <channel name="Left Aileron">
       <pure_gain>
         <input>ap/aileron-cmd-norm</input>
         <gain>ap/aero-moment-mix</gain>
-        <output>fcs/left-aileron-pos-rad</output>
+        <output>fcs/left-aileron-pos-norm</output>
         <clipto>
             <min>-0.5</min>
             <max>0.5</max>
         </clipto>
       </pure_gain>
+      <aerosurface_scale>
+        <input>fcs/left-aileron-pos-norm</input>
+        <range>
+          <min>-50</min>
+          <max>50</max>
+        </range>
+        <output>fcs/left-aileron-pos-deg</output>
+      </aerosurface_scale>
     </channel>
 
     <channel name="Right Aileron">
       <pure_gain>
         <input>ap/aileron-cmd-norm</input>
         <gain>-ap/aero-moment-mix</gain>
-        <output>fcs/right-aileron-pos-rad</output>
+        <output>fcs/right-aileron-pos-norm</output>
         <clipto>
             <min>-0.5</min>
             <max>0.5</max>
         </clipto>
       </pure_gain>
+      <aerosurface_scale>
+        <input>fcs/right-aileron-pos-norm</input>
+        <range>
+          <min>-50</min>
+          <max>50</max>
+        </range>
+        <output>fcs/right-aileron-pos-deg</output>
+      </aerosurface_scale>
     </channel>
 
     <channel name="Rudder">
       <pure_gain>
         <input>ap/rudder-cmd-norm</input>
         <gain>ap/aero-moment-mix</gain>
-        <output>fcs/rudder-pos-rad</output>
+        <output>fcs/rudder-pos-norm</output>
         <clipto>
             <min>-0.5</min>
             <max>0.5</max>
         </clipto>
       </pure_gain>
+      <aerosurface_scale>
+        <input>fcs/rudder-pos-norm</input>
+        <range>
+          <min>-50</min>
+          <max>50</max>
+        </range>
+        <output>fcs/rudder-pos-deg</output>
+      </aerosurface_scale>
     </channel>
       
     <channel name="Engine0">
@@ -576,10 +628,10 @@
       <summer>
         <input>ap/elevator_to_engine0</input>
         <input>ap/throttle_to_engine0</input>
-        <output>ap/throttle-pos-norm</output>
+        <output>fcs/throttle-pos-norm</output>
         <clipto>
             <min>0</min>
-            <max>2</max>
+            <max>1</max>
         </clipto>
       </summer>
     </channel>
@@ -589,7 +641,7 @@
       <pure_gain name="ap/rudder_to_engine0_yaw">
         <input>ap/rudder-cmd-norm</input>
         <gain>ap/engine-yaw-mix</gain>
-        <output>propulsion/engine/yaw-angle-rad</output>
+        <output>propulsion/engine/yaw-angle-deg</output>
         <clipto>
             <min>-0.1</min>
             <max>0.1</max>
@@ -656,7 +708,6 @@
         </clipto>
       </summer>
     </channel>
-
 
   </flight_control>
 
@@ -758,8 +809,8 @@
         <y>  0 </y>
         <z>  0 </z>
       </location>
-      <capacity unit="LBS"> 6000 </capacity>
-      <contents unit="LBS"> 6000 </contents>
+      <capacity unit="LBS"> 13500 </capacity>
+      <contents unit="LBS"> 1000 </contents>
     </tank>
   </propulsion>
 
@@ -910,13 +961,7 @@
         <product>
           <property>aero/qbar-psf</property>
           <property>metrics/Sw-sqft</property>
-          <table>
-            <independentVar lookup="row">fcs/spoiler-pos-norm</independentVar>
-            <tableData>
-              0 1
-              1 0
-            </tableData>
-          </table>
+          <property>fcs/spoiler-pos-norm</property>
           <value>0.031</value>
         </product>
       </function>
