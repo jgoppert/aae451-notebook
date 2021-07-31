@@ -126,7 +126,7 @@ def trim(aircraft, ic, design_vector, x0, verbose,
     return ic, props
 
 
-def simulate(aircraft, op_0, op_list=None, tf=50, realtime=False, verbose=False):
+def simulate(aircraft, op_0, op_list=None, tf=50, realtime=False, show=False, verbose=False):
     if op_list is None:
         op_list = []
         
@@ -135,7 +135,8 @@ def simulate(aircraft, op_0, op_list=None, tf=50, realtime=False, verbose=False)
 
     # load model
     fdm.load_model(aircraft)
-    fdm.set_output_directive(str(root/ 'data_output' / 'flightgear.xml'))
+    if show:
+        fdm.set_output_directive(str(root/ 'data_output' / 'flightgear.xml'))
     fdm_props = fdm.get_property_catalog('')
     
     # add a method to check that properties being set exist
